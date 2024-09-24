@@ -8,6 +8,14 @@ type Props = {
     currentUserId: string;
 }
 
+// Defina a interface User
+interface User {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+}
+
 export default function OtherUsers({ currentUserId }: Props) {
     const [otherUsers, setOtherUsers] = React.useState([]);
 
@@ -15,7 +23,7 @@ export default function OtherUsers({ currentUserId }: Props) {
         // Função assíncrona para buscar os usuários
         const fetchUsers = async () => {
             const users = await getUsers();
-            setOtherUsers(users.filter((user: any) => user.id != parseInt(currentUserId)));
+            setOtherUsers(users.filter((user: User) => user.id != parseInt(currentUserId)));
         };
 
         fetchUsers(); // Chama a função
@@ -27,7 +35,7 @@ export default function OtherUsers({ currentUserId }: Props) {
 
     return (
         <ul>
-            {otherUsers.map((user: any) => {
+            {otherUsers.map((user: User) => {
                 return (
                     <li key={user.id}>
                         <Link href={`/users/${user.id}`}>
