@@ -1,14 +1,8 @@
 import OtherUsers from "../components/other-users";
+import { User } from "../models/user";
 import { getUsers } from "../services/get-user";
 import { getUserById } from "../services/get-user-by-id";
 
-// Defina a interface User
-interface User {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-}
 
 export async function generateStaticParams() {
     const users: User[] = await getUsers(); // Certifique-se que getUsers retorna User[]

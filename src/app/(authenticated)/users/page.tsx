@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { getUsers } from "./services/get-user";
+import { User } from "./models/user";
 
 export default async function UsersPage() {
 
-    interface User {
-        id: number;
-        first_name: string;
-        last_name: string;
-        email: string;
-    }
     const users = await getUsers();
     return (
         <>

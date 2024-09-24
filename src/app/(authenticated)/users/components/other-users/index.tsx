@@ -3,17 +3,10 @@
 import React from "react";
 import { getUsers } from "../../services/get-user";
 import Link from "next/link";
+import { User } from "../../models/user";
 
 type Props = {
     currentUserId: string;
-}
-
-// Defina a interface User
-interface User {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
 }
 
 export default function OtherUsers({ currentUserId }: Props) {
